@@ -1,72 +1,93 @@
-# Reviews-Text-Analysis
+# 📝 Review Sentiment Analysis
 
-**Project Overview**  
+This project focuses on analyzing and classifying **Amazon product reviews**.  
+The goal is to preprocess the text data, extract meaningful features using NLP, and build machine learning models to predict review scores.
 
-This project aims to analyze and classify Amazon product reviews. The goal is to preprocess the text data, extract meaningful features, and build machine learning models to predict the review scores.  
-  
+---
 
-**Dataset**  
-  
-The dataset is extracted from a zip file containing multiple text files of Amazon reviews. Each file contains the following information:  
-  
+## 📚 Table of Contents
 
-- ProductId: The ID of the product.
-- UserId: The ID of the user who wrote the review.
-- ProfileName: The profile name of the user.
-- HelpfulnessNumerator: The number of users who found the review helpful.
-- HelpfulnessDenominator: The total number of users who evaluated the review.
-- Score: The rating given by the user (1-5).
-- Time: The time when the review was written (in UNIX timestamp).
-- ReviewSummary: A brief summary of the review.
-- ReviewText: The full text of the review.
-  
-**Project Structure**
+- [Project Overview](#project-overview)
+- [Dataset](#dataset)
+- [Key Steps](#key-steps)
+- [Results](#results)
+- [Insights](#insights)
 
-`txt_reviews.zip`: The zip file containing the text reviews.(I Have uploaded the Sample Files)    
-`Text_project_Main.ipynb`: The Jupyter notebook containing the code for data extraction, preprocessing, and model training.  
-`sample_text_data_flat.csv`: A sample dataset of preprocessed review texts and features.(I Have uploaded the Sample CSV File)  
+---
 
-**Key Steps**  
+## 📘 Project Overview
 
-`Data Extraction and Loading`:  
+This project analyzes user-written Amazon reviews using NLP and machine learning.  
+It involves text cleaning, feature extraction using **TF-IDF**, and model building for **rating prediction (1–5)**.
 
--- Extract reviews from the zip file.  
--- Load the reviews into a pandas DataFrame.
+---
 
-`Data Preprocessing`:
+## 📂 Dataset
 
--- Calculate helpfulness scores.  
--- Convert review times to a readable format.  
--- Clean and tokenize the review texts.  
--- Remove stopwords and lemmatize tokens.  
--- Create a lemmatized text column for further analysis.  
+The dataset consists of Amazon product reviews, with each entry containing:
 
-`Exploratory Data Analysis (EDA)`:  
-  
--- Plot the distribution of review scores.  
--- Plot the distribution of helpfulness scores. etc.,  
+- `ProductId`: Product's unique ID  
+- `UserId`: Reviewer’s ID  
+- `ProfileName`: Reviewer’s name  
+- `HelpfulnessNumerator/Denominator`: Helpfulness vote stats  
+- `Score`: Rating (1 to 5)  
+- `Time`: Review timestamp  
+- `ReviewSummary`: Short summary  
+- `ReviewText`: Full review content  
 
-`Text Vectorization`:`
-  
--- Use TF-IDF vectorization to convert text data into numerical features.  
-  
-`Model Training and Evaluation`:  
-  
-- Logistic Regression
-- Multinomial Naive Bayes
-- Gradient Boosting
-- Support Vector Machine (SVM)
-- Random Forest
-  
-Compare models based on accuracy.
+📦 Sample file provided:
+- `txt_reviews.zip`: Sample raw review files
 
-**Results**
+---
 
-- Logistic Regression Model:  Accuracy: 71.59%
-- Multinomial Naive Bayes Model: Accuracy: 65.74%
-- Gradient Boosting Model: Accuracy: 67.55%
-- Support Vector Machine Model: Accuracy: 71.53%
-- Random Forest Model: Accuracy: 70.23%
+## 🔑 Key Steps
 
+### 🔸 1. Data Extraction
+- Extract `.txt` reviews from ZIP
+- Load into a Pandas DataFrame
 
-The Logistic Regression model achieved the highest accuracy in predicting the review scores.
+### 🔸 2. Preprocessing
+- Calculate helpfulness ratio
+- Convert Unix timestamp to datetime
+- Clean & tokenize reviews
+- Remove stopwords and lemmatize text
+
+### 🔸 3. EDA (Exploratory Data Analysis)
+- Score distribution plots  
+- Helpfulness rating visualizations
+
+### 🔸 4. Text Vectorization
+- Apply **TF-IDF** to convert text into numerical vectors
+
+### 🔸 5. Model Training
+Trained and evaluated multiple classifiers:
+
+- Logistic Regression  
+- Multinomial Naive Bayes  
+- Gradient Boosting  
+- Support Vector Machine (SVM)  
+- Random Forest  
+
+---
+
+## 📊 Results
+
+| Model                   | Accuracy   |
+|--------------------------|------------|
+| Logistic Regression      | **71.59%** ✅ |
+| SVM                      | 71.53%     |
+| Random Forest            | 70.23%     |
+| Gradient Boosting        | 67.55%     |
+| Multinomial Naive Bayes  | 65.74%     |
+
+✅ **Logistic Regression** performed best among the models.
+
+---
+
+## 💡 Insights
+
+- Text data preprocessing significantly impacts model performance.
+- **TF-IDF** was effective for this task over raw tokens.
+- Logistic Regression and SVM gave close accuracy, but Logistic Regression had a slight edge.
+- Gradient Boosting underperformed possibly due to high feature dimensionality.
+
